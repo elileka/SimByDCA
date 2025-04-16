@@ -6,7 +6,7 @@ This code is adapted from the Bitbol's group simulator (forked from [here](https
 
 Briefly, given a multiple sequence alignment of biological interest (**bio-MSA**), from which Potts' couplings (J) and fields (h) parameters were inferred using [bmDCA](https://github.com/ranganathanlab/bmDCA.git) and for which a tree was inferred (**bio-T**), the simulator will generate amino-acid (AA) sequences along bio-T by accepting/rejecting proposed mutations according to the Metropolis criterion defined by h and J.
 
-Major differences between this fork and the original:
+The main differences between this fork and the original:
 * Small bug fix in cython_code/**generation_sequence.pyx** based on this [fix](https://github.com/Bitbol-Lab/Phylogeny-ESM2/blob/4d75497116427948de2bb1d7722483e3b95f3781/MSAGenerator/MSAGenerator.py#L52-L55).
 * Modified field_bmDCA/**import_msa.py** to determine the MSA length dynamically.
 * Generalized the manager-script **generation_sequence.py** so it takes in arguments, converts tree labels to integers and can be run from outside the directory.
