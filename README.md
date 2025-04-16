@@ -1,6 +1,6 @@
 # SimByDCA
 
-**_Amino-acid sequence simulations along a tree that respect structural constraints._**
+**_Simulating synthetic amino-acid sequences along a tree while respecting structural constraints._**
 
 This code is adapted from the Bitbol's group simulator (forked from [here](https://github.com/Bitbol-Lab/Phylogeny-Partners/tree/v2.0). Please refer to their papers by [Gerardos et al.](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010147) and by [Lupo et al.](https://www.nature.com/articles/s41467-022-34032-y) for a full description of the simulator. Please cite their work if you use this adaptation.
 
