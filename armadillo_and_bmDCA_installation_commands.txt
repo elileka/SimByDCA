@@ -1,0 +1,33 @@
+# install armadillo - a dependency of bmDCA:
+wget https://sourceforge.net/projects/arma/files/armadillo-14.2.2.tar.xz
+tar -xvf armadillo-14.2.2.tar.xz
+cd armadillo-14.2.2
+# local installation directory
+mkdir -p ~/local
+export PREFIX=$HOME/local
+export CFLAGS="-I$PREFIX/include"
+export LDFLAGS="-L$PREFIX/lib"
+export PKG_CONFIG_PATH="$PREFIX/lib/pkgconfig:$PKG_CONFIG_PATH"
+export LD_LIBRARY_PATH="$PREFIX/lib:$LD_LIBRARY_PATH"
+cmake . -DCMAKE_INSTALL_PREFIX=$PREFIX
+make -j$(16)
+make install
+# verify the installation:
+ls ~/local/lib | grep armadillo
+# ensure pkg-config can find it:
+pkg-config --modversion armadillo
+
+# install bmDCA (commit aba5168; installed on our system on 20250127):
+git clone https://github.com/ranganathanlab/bmDCA.git
+cd bmDCA
+# set environment variables for local Armadillo:
+export CFLAGS="-I$HOME/local/include $CFLAGS"
+export LDFLAGS="-L$HOME/local/lib $LDFLAGS"
+export PKG_CONFIG_PATH="$HOME/local/lib/pkgconfig:$PKG_CONFIG_PATH"
+export LD_LIBRARY_PATH="$HOME/local/lib:$LD_LIBRARY_PATH"
+# run the build Configuration (autogen.sh) and specify local installation directory (using --prefix) and not /usr/local (no root permissions):
+./autogen.sh --prefix=$HOME/local
+make -j4
+make install
+# adjust the path:
+export PATH="$HOME/local/bin:$PATH"
