@@ -25,4 +25,24 @@ cythonize -i generation_sequence.pyx
 
 ### Input requirements
 
+The simulator requires:
+* MSA of real (biological) amino-acid sequences (bio-MSA) in FASTA format
+* a phylogenetic tree bio-T which was inferred from bio-MSA in Newick format. The simulation will occur along bio-T
+* a txt file `parameters_final.txt` with the results of bmDCA inference on bio-MSA
+* path to write the output
+* number of flips to generate a root sequence that resembles the bio-MSA: (in our experience: `--eq_flips 100000` works fine)
 
+To infer paramters with bmDCA, we refer you to [this repository](https://github.com/ranganathanlab/bmDCA.git) and provide the following tips:
+* The number of sequences in bio-MSA should be in the order of square the number of columns in it.
+* Inference may take several days (5-7 in our experience)
+* Once finished, convert the result files as follows:
+  `arma2ascii -p parameters_h_final.bin -P parameters_J_final.bin`
+This will generate a big file `parameters_final.txt` of the following structure:
+```
+# J 0 1 0 0 0.513048
+# J 0 1 0 1 0.0502829
+# J 0 1 0 2 -0.0384053
+...
+# h ...
+...
+```
