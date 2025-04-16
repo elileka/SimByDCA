@@ -9,7 +9,7 @@ Briefly, given an MSA of biological interest (bio-MSA), from which Potts' coupli
 Major differences of this fork to the original:
 * Small bug fix in cython_code/**generation_sequence.pyx** based on this [fix](https://github.com/Bitbol-Lab/Phylogeny-ESM2/blob/4d75497116427948de2bb1d7722483e3b95f3781/MSAGenerator/MSAGenerator.py#L52-L55).
 * Modified field_bmDCA/**import_msa.py** to determine the MSA length dynamically.
-* Generalized the manager-script **generation_sequence.py** so it takes in arguments, converts tree labels to integers, can be run from outside the directory.
+* Generalized the manager-script **generation_sequence.py** so it takes in arguments, converts tree labels to integers and can be run from outside the directory.
 * Added auxiliary scripts to convert from npy to FASTA and unalign the simulated MSA.
 * Cleaned up: removal of anything that is not used for AA simulations.
 
