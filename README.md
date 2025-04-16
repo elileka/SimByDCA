@@ -35,16 +35,24 @@ To infer parameters with bmDCA, we refer you to [the bmDCA repository](https://g
 * Our step-by-step installation commands of armadillo and bmDCA can be found in the file `armadillo_and_bmDCA_installation_commands.txt`
 * Let _L_ be the number of columns in bio-MSA, then the number of sequences in bio-MSA should be in the order of _L<sup>2</sup>_ for effective inference
 * Inference (even when multithreaded) may take several days (5-7 in our experience)
-* Once finished, convert the result files as follows:
-  `arma2ascii -p parameters_h_final.bin -P parameters_J_final.bin`. This will generate a big file `parameters_final.txt` of the following structure:
+* Once finished, convert the result files:
 ```
-J 0 1 0 0 0.513048
-J 0 1 0 1 0.0502829
-J 0 1 0 2 -0.0384053
-...
-h 0 0 21.1422
-...
+arma2ascii -p parameters_h_final.bin -P parameters_J_final.bin
 ```
+This will generate a big file `parameters_final.txt` of the following structure:
+
+> J 0 1 0 0 0.513048
+> 
+> J 0 1 0 1 0.0502829
+> 
+> J 0 1 0 2 -0.0384053
+> 
+> ...
+> 
+> h 0 0 21.1422
+> 
+> ...
+
 ### Running the simulator
 
 ```
