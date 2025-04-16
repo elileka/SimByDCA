@@ -38,10 +38,10 @@ To infer paramters with bmDCA, we refer you to [the bmDCA repository](https://gi
 * Once finished, convert the result files as follows:
   `arma2ascii -p parameters_h_final.bin -P parameters_J_final.bin`. This will generate a big file `parameters_final.txt` of the following structure:
 ```
-# J 0 1 0 0 0.513048
-# J 0 1 0 1 0.0502829
-# J 0 1 0 2 -0.0384053
+J 0 1 0 0 0.513048
+J 0 1 0 1 0.0502829
+J 0 1 0 2 -0.0384053
 ...
-# h ...
+h 0 0 21.1422
 ...
 ```
