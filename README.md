@@ -17,7 +17,7 @@ Major differences between this fork and the original:
 
 Requirements: cython, biopython
 
-After cloning: 
+After cloning this repo: 
 ```
 cd SimByDCA/21_states/cython_code
 cythonize -i generation_sequence.pyx
@@ -31,7 +31,7 @@ cythonize -i generation_sequence.pyx
 * A Path to write the output
 * The number of flips to generate a root sequence that resembles the bio-MSA: (in our experience: `--eq_flips 100000` works fine)
 
-To infer paramters with bmDCA, we refer you to [the bmDCA repository](https://github.com/ranganathanlab/bmDCA.git) and provide the following tips:
+To infer parameters with bmDCA, we refer you to [the bmDCA repository](https://github.com/ranganathanlab/bmDCA.git) and provide the following tips:
 * Our step-by-step installation commands of armadillo and bmDCA can be found in the file `armadillo_and_bmDCA_installation_commands.txt`
 * Let _L_ be the number of columns in bio-MSA, then the number of sequences in bio-MSA should be in the order of _L<sup>2</sup>_ for effective inference
 * Inference (even when multithreaded) may take several days (5-7 in our experience)
@@ -45,3 +45,29 @@ J 0 1 0 2 -0.0384053
 h 0 0 21.1422
 ...
 ```
+### Running the simulator
+
+```
+python SimByDCA/21_states/generation_sequence.py --msa path/to/bio-MSA.fasta --tree path/to/bio-T.newick --bmDCA path/to/bmDCA-on-bio-MSA/parameters_final.txt --output_dir path/to/results/dir --eq_flips 100000
+```
+### The simulator's output
+For technical reasons, the tip labels of bio-T need to be converted to integers for the simulation process. The simulator saves the mapping from the original labels to the numerical labels as well as the bio-T with numerical labels. Additionally, bio-T will be rooted before simulation begins so its rooted version will also be saved.
+
+In all, the simulator will save 4 files in the results directory:
+* **bitbol_gen_name_to_index.tsv** - map of original label to number
+* **bitbol_gen_input_tree_numerical_names.newick** - bio-T with numerical labels
+* **bitbol_gen_rooted_tree_numerical_names.newick** - rooted version of bio-T (the actual input to the simulator)
+* **bitbol_gen_sim_eq_msa_along_tree.npy** - the simulated MSA
+
+### Processing the output
+
+To obtain a FASTA file from the npy output file, run:
+```
+python SimByDCA/21_states/inference_MSA.py bitbol_gen_sim_eq_msa_along_tree.npy bitbol_gen_sim_eq_msa_along_tree.fasta
+```
+
+To unalign the MSA and summarize it, run:
+```
+python SimByDCA/21_states/summarize_and_unalign_sim_msa.py bitbol_gen_sim_eq_msa_along_tree.fasta path/to/results/dir
+```
+This will create a file `unaligned.fasta` with the unaligned simulated sequences and a file `msa_statistics.txt`
