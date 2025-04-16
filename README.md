@@ -4,7 +4,7 @@
 
 This code is adapted from the Bitbol's group simulator (forked from [here](https://github.com/Bitbol-Lab/Phylogeny-Partners/tree/v2.0). Please refer to their papers by [Gerardos et al.](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010147) and by [Lupo et al.](https://www.nature.com/articles/s41467-022-34032-y) for a full description of the simulator. Please cite their work if you use this adaptation.
 
-Briefly, given a multiple sequence alignment of biological interest (**bio-MSA**), from which Potts' couplings (J) and fields (h) parameters were inferred using bmDCA and for which a tree was inferred (**bio-T**), the simulator will generate amino-acid (AA) sequences along bio-T by accepting/rejecting proposed mutations according to the Metropolis criterion defined by h and J.
+Briefly, given a multiple sequence alignment of biological interest (**bio-MSA**), from which Potts' couplings (J) and fields (h) parameters were inferred using [bmDCA](https://github.com/ranganathanlab/bmDCA.git) and for which a tree was inferred (**bio-T**), the simulator will generate amino-acid (AA) sequences along bio-T by accepting/rejecting proposed mutations according to the Metropolis criterion defined by h and J.
 
 Major differences of this fork to the original:
 * Small bug fix in cython_code/**generation_sequence.pyx** based on this [fix](https://github.com/Bitbol-Lab/Phylogeny-ESM2/blob/4d75497116427948de2bb1d7722483e3b95f3781/MSAGenerator/MSAGenerator.py#L52-L55).
@@ -32,7 +32,7 @@ The simulator requires:
 * path to write the output
 * number of flips to generate a root sequence that resembles the bio-MSA: (in our experience: `--eq_flips 100000` works fine)
 
-To infer paramters with bmDCA, we refer you to [this repository](https://github.com/ranganathanlab/bmDCA.git) and provide the following tips:
+To infer paramters with bmDCA, we refer you to [the bmDCA repository](https://github.com/ranganathanlab/bmDCA.git) and provide the following tips:
 * The number of sequences in bio-MSA should be in the order of square the number of columns in it.
 * Inference (even when multithreaded) may take several days (5-7 in our experience)
 * Once finished, convert the result files as follows:
