@@ -34,7 +34,7 @@ The simulator requires:
 
 To infer paramters with bmDCA, we refer you to [this repository](https://github.com/ranganathanlab/bmDCA.git) and provide the following tips:
 * The number of sequences in bio-MSA should be in the order of square the number of columns in it.
-* Inference may take several days (5-7 in our experience)
+* Inference may take several days (5-7 multithreaded in our experience)
 * Once finished, convert the result files as follows:
   `arma2ascii -p parameters_h_final.bin -P parameters_J_final.bin`. This will generate a big file `parameters_final.txt` of the following structure:
 ```
