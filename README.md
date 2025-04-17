@@ -24,9 +24,9 @@ cythonize -i generation_sequence.pyx
 
 ### Required input for running the simulator
 * An MSA of real (biological) amino acid sequences (bio-MSA) in FASTA format
-* A phylogenetic tree bio-T which was inferred from bio-MSA in Newick format. The simulation will occur along bio-T
+* A phylogenetic tree bio-T which was inferred from bio-MSA in Newick format
 * A file `parameters_final.txt` with the results of bmDCA inference on bio-MSA
-* A Path to write the output
+* A path to write the output
 * The number of flips to generate a root sequence that resembles the bio-MSA: (in our experience, setting `--eq_flips 100000` works well)
 
 To infer parameters with bmDCA, we refer you to [the bmDCA repository](https://github.com/ranganathanlab/bmDCA.git) and provide the following tips:
